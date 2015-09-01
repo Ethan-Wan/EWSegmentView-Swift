@@ -13,6 +13,8 @@
 		AA8076381B8F05F400FC453C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA8076371B8F05F400FC453C /* Images.xcassets */; };
 		AA80763B1B8F05F400FC453C /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA8076391B8F05F400FC453C /* LaunchScreen.xib */; };
 		AA8076471B8F05F400FC453C /* EWSegmentView_SwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8076461B8F05F400FC453C /* EWSegmentView_SwiftTests.swift */; };
+		AA8076561B9009AB00FC453C /* EWSegmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8076551B9009AB00FC453C /* EWSegmentView.swift */; };
+		AA8076581B9009C400FC453C /* EWSegmentHeadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA8076571B9009C400FC453C /* EWSegmentHeadView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +38,8 @@
 		AA8076401B8F05F400FC453C /* EWSegmentView-SwiftTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "EWSegmentView-SwiftTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA8076451B8F05F400FC453C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AA8076461B8F05F400FC453C /* EWSegmentView_SwiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EWSegmentView_SwiftTests.swift; sourceTree = "<group>"; };
+		AA8076551B9009AB00FC453C /* EWSegmentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EWSegmentView.swift; sourceTree = "<group>"; };
+		AA8076571B9009C400FC453C /* EWSegmentHeadView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EWSegmentHeadView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +81,7 @@
 		AA80762D1B8F05F400FC453C /* EWSegmentView-Swift */ = {
 			isa = PBXGroup;
 			children = (
+				AA8076501B8F060B00FC453C /* SegmentView */,
 				AA8076301B8F05F400FC453C /* AppDelegate.swift */,
 				AA8076321B8F05F400FC453C /* ViewController.swift */,
 				AA8076341B8F05F400FC453C /* Main.storyboard */,
@@ -110,6 +115,15 @@
 				AA8076451B8F05F400FC453C /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		AA8076501B8F060B00FC453C /* SegmentView */ = {
+			isa = PBXGroup;
+			children = (
+				AA8076551B9009AB00FC453C /* EWSegmentView.swift */,
+				AA8076571B9009C400FC453C /* EWSegmentHeadView.swift */,
+			);
+			path = SegmentView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -212,7 +226,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA8076561B9009AB00FC453C /* EWSegmentView.swift in Sources */,
 				AA8076331B8F05F400FC453C /* ViewController.swift in Sources */,
+				AA8076581B9009C400FC453C /* EWSegmentHeadView.swift in Sources */,
 				AA8076311B8F05F400FC453C /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -411,6 +427,7 @@
 				AA80764C1B8F05F400FC453C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		AA80764D1B8F05F400FC453C /* Build configuration list for PBXNativeTarget "EWSegmentView-SwiftTests" */ = {
 			isa = XCConfigurationList;
@@ -419,6 +436,7 @@
 				AA80764F1B8F05F400FC453C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
