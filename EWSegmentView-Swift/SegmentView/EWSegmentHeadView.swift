@@ -10,8 +10,8 @@ import UIKit
 
 
 typealias didHeadClick =  () -> ()
-//protocol EWSegmentHeadViewDelegate{
-//   func segmentHeadViewDidClick(headView:EWSegmentHeadView ,button:UIButton)
+//@objc protocol EWSegmentHeadViewDelegate{
+//    optional func segmentHeadViewDidClick(headView:EWSegmentHeadView ,button:UIButton)
 //}
 
 class EWSegmentHeadView: UIView {
@@ -49,7 +49,7 @@ class EWSegmentHeadView: UIView {
     }
     
     required init(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+        super.init(coder: aDecoder)!
         setup()
     }
     
@@ -73,7 +73,7 @@ class EWSegmentHeadView: UIView {
         let viewH:CGFloat = self.frame.size.height
         let viewW:CGFloat = self.frame.size.width
         print(self.buttonView.subviews.count)
-        let headButtonW:CGFloat = viewW/CGFloat(count(self.buttonView.subviews))
+        let headButtonW:CGFloat = viewW/CGFloat(self.buttonView.subviews.count)
         
         //按钮view布局
         self.buttonView.frame = CGRectMake(0, 0, viewW, viewH*0.9)
@@ -97,7 +97,7 @@ class EWSegmentHeadView: UIView {
     
     private func addHeadButton(title:String?)
     {
-        var headButton = UIButton()
+        let headButton = UIButton()
         
         headButton.setTitle(title, forState: UIControlState.Normal)
         headButton.setTitleColor(self.normalTitleColor ?? UIColor.blackColor(), forState: UIControlState.Normal)
@@ -128,7 +128,7 @@ class EWSegmentHeadView: UIView {
         {
             didClick()
         }
-//        self.delegate?.segmentHeadViewDidClick(self, button: button)
+//        self.delegate?.segmentHeadViewDidClick?(self, button: button)
     }
     
     private func turnSelectButton(button:UIButton)

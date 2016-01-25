@@ -8,13 +8,13 @@
 
 import UIKit
 
-class EWSegmentView: UIView,UIPageViewControllerDataSource,UIPageViewControllerDelegate {
+class EWSegmentView: UIView,UIPageViewControllerDataSource,UIPageViewControllerDelegate{
 
     var subViewControllers = [UIViewController]()
     {
         didSet
         {
-            if count(self.subViewControllers) > 0
+            if self.subViewControllers.count > 0
             {
                 self.pageViewController.setViewControllers([self.subViewControllers[0]], direction: UIPageViewControllerNavigationDirection.Forward, animated: false, completion: nil)
             }
@@ -26,14 +26,12 @@ class EWSegmentView: UIView,UIPageViewControllerDataSource,UIPageViewControllerD
 
         didSet
         {
-//            self.headView.delegate = self
-            
             self.headView.setHeadTitles(getTitles())
             
             self.headView.didClick =
             {
                 let subVCs = self.subViewControllers as NSArray
-                let direction:UIPageViewControllerNavigationDirection = self.headView.selectedButtonIndex > subVCs.indexOfObject(self.pageViewController.viewControllers[self.pageViewController.viewControllers.count - 1]) ?UIPageViewControllerNavigationDirection.Forward : UIPageViewControllerNavigationDirection.Reverse
+                let direction:UIPageViewControllerNavigationDirection = self.headView.selectedButtonIndex > subVCs.indexOfObject(self.pageViewController.viewControllers![self.pageViewController.viewControllers!.count - 1]) ?UIPageViewControllerNavigationDirection.Forward : UIPageViewControllerNavigationDirection.Reverse
                 
                 self.pageViewController.setViewControllers([self.selectedController()], direction: direction, animated: true, completion: nil)
             }
@@ -48,7 +46,7 @@ class EWSegmentView: UIView,UIPageViewControllerDataSource,UIPageViewControllerD
     }
     
     required init(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+        super.init(coder: aDecoder)!
         setup()
     }
     
@@ -58,7 +56,7 @@ class EWSegmentView: UIView,UIPageViewControllerDataSource,UIPageViewControllerD
         self.pageViewController.view.frame = self.bounds
         self.pageViewController.dataSource = self
         self.pageViewController.delegate = self
-        self.pageViewController.view.autoresizingMask = (UIViewAutoresizing.FlexibleWidth | UIViewAutoresizing.FlexibleHeight)
+        self.pageViewController.view.autoresizingMask = ([UIViewAutoresizing.FlexibleWidth , UIViewAutoresizing.FlexibleHeight])
         self.addSubview(pageViewController.view)
     }
     
@@ -100,15 +98,14 @@ class EWSegmentView: UIView,UIPageViewControllerDataSource,UIPageViewControllerD
         return self.subViewControllers[++index]
     }
     
-    func pageViewController(pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [AnyObject], transitionCompleted completed: Bool) {
+    func pageViewController(pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
         if !completed
-        {
-            return
-        }
+                {
+                    return
+                }
         
         let subVCs = self.subViewControllers as NSArray
-        self.headView.selectedButtonIndex = subVCs.indexOfObject(pageViewController.viewControllers[count(pageViewController.viewControllers) - 1])
-
+        self.headView.selectedButtonIndex = subVCs.indexOfObject(pageViewController.viewControllers![pageViewController.viewControllers!.count - 1])
     }
     
     
